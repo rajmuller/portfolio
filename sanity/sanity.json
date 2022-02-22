@@ -1,10 +1,10 @@
 {
   "root": true,
   "project": {
-    "name": "sanity_portfolio"
+    "name": "rein-portfolio"
   },
   "api": {
-    "projectId": "5aijr8b2",
+    "projectId": "xqw2al3e",
     "dataset": "production"
   },
   "plugins": [
