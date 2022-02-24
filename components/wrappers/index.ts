@@ -1,7 +1,4 @@
-import AppWrap from './AppWrap';
-import MotionWrap from './MotionWrap';
+import Wrapper from './FullScreenWrapper';
+import MotionWrapper from './MotionWrapper';
 
-export {
-  AppWrap,
-  MotionWrap,
-};
+export { Wrapper, MotionWrapper };

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { HiMenuAlt4, HiX } from 'react-icons/hi';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const sections = ['home', 'about', 'work', 'skills', 'contact'];
+const sections = ['landing', 'about', 'work', 'skills', 'contact'];
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);

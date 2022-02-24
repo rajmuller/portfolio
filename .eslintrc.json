@@ -5,6 +5,7 @@
     "prettier"
   ],
   "rules": {
+    "no-console": "warn",
     "react/function-component-definition": [
       "error",
       {

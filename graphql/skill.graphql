@@ -1,0 +1,20 @@
+query Skill {
+  allExperiences {
+    year
+    works {
+      name
+      company
+      desc
+    }
+  }
+
+  allSkills {
+    name
+    bgColor
+    icon {
+      asset {
+        url
+      }
+    }
+  }
+}
