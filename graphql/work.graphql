@@ -1,0 +1,18 @@
+query Work {
+  allWorks {
+    title
+    _id
+    tags
+    projectLink
+    codeLink
+
+    description
+    imgUrl {
+      asset {
+        url
+        _id
+      }
+    }
+    _key
+  }
+}

@@ -1,14 +1,14 @@
 overwrite: true
-schema: ${NEXT_PUBLIC_GRAPHCMS_ENDPOINT}
+schema: ${GRAPHQL_ENDPOINT}
 documents: graphql/**/*.graphql
 generates:
-  graphql/generated.tsx:
+  graphql/generated.ts:
     plugins:
       - typescript
       - typescript-operations
+      - typescript-graphql-request
     config:
       withHooks: true
 hooks:
   afterAllFileWrite:
-    - eslint --fix
     - prettier --write
