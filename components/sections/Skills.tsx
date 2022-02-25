@@ -20,7 +20,7 @@ const Skills = ({ skills: { experiences, skills } }: SkillsProps) => {
   return (
     <MotionWrapper>
       <Wrapper idName="skills">
-        <div className="flex flex-col items-center justify-center">
+        <div className="mt-16 flex flex-col items-center justify-center md:mt-0">
           <h2 className="head-text">Skills & Experiences</h2>
 
           <div className="mt-12 flex w-4/5 flex-col lg:flex-row">
@@ -49,7 +49,7 @@ const Skills = ({ skills: { experiences, skills } }: SkillsProps) => {
               ))}
             </motion.div>
 
-            <div className="flex flex-[2] flex-col items-start justify-start">
+            <div className="mt-8 flex flex-[2] flex-col items-start justify-start md:mt-0">
               {experiences.map((experience) => (
                 <motion.div
                   className="my-4 flex w-full flex-row items-start justify-start"

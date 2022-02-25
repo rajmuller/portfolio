@@ -12,7 +12,7 @@ const About = ({ abouts }: AboutProps) => {
   return (
     <MotionWrapper>
       <Wrapper idName="about">
-        <div className="flex flex-col">
+        <div className="mt-16 flex flex-col md:mt-0">
           <h2 className="head-text normal-case">
             The <span>Frontend</span> is my Swamp <br />
             <span>Decentralization</span> is my Fiona <br />
