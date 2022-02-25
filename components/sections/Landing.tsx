@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { getRndInteger } from '../../util';
 import { MotionWrapper, Wrapper } from '../wrappers';
 
 const scaleVariants = {
@@ -13,8 +14,6 @@ const scaleVariants = {
   },
 };
 
-// const MotionImage = motion(Image);
-
 const Landing = () => {
   return (
     <MotionWrapper>
@@ -27,7 +26,7 @@ const Landing = () => {
           backgroundPosition: 'center',
         }}
       >
-        <div className="relative flex h-full w-full flex-1 flex-col justify-center px-4 pb-8 pt-24 md:w-full md:flex-row md:items-center md:pt-24 md:pb-0 xl:px-32 xl:pt-32 2xl:px-48">
+        <div className="relative flex h-full w-full flex-1 select-none flex-col justify-center px-4 pb-8 pt-24 md:w-full md:flex-row md:items-center md:pt-24 md:pb-0 xl:px-32 xl:pt-32 2xl:px-48">
           <motion.div
             whileInView={{ x: [-100, 0], opacity: [0, 1] }}
             transition={{ duration: 0.5 }}
@@ -37,8 +36,13 @@ const Landing = () => {
               <div className="flex w-auto flex-row items-center justify-center rounded-2xl px-8 py-4 shadow-[0px_0px_20px_rgba(0,0,0,0.1)]">
                 <span className="text-4xl 2xl:text-7xl">👋</span>
                 <div style={{ marginLeft: 20 }}>
-                  <p className="p-text">Hello, I am</p>
-                  <h1 className="head-text">Adam</h1>
+                  <p className="p-text mb-4">Hello, I am</p>
+                  <h1
+                    style={{ textAlign: 'right' }}
+                    className="head-text leading-none"
+                  >
+                    Adam <span>Rein</span> Rajmuller
+                  </h1>
                 </div>
               </div>
 
@@ -63,12 +67,19 @@ const Landing = () => {
               objectFit="contain"
               src="/images/sub4.png"
               className="z-[1]"
-              alt="profile_bg"
+              alt="profile_picture"
             />
             <motion.img
-              whileInView={{ scale: [0, 1] }}
-              transition={{ duration: 1, ease: 'easeInOut' }}
-              src="/svgs/circle.svg"
+              animate={{
+                scale: [1, 1.05],
+              }}
+              transition={{
+                repeat: Infinity,
+                duration: 10,
+                ease: 'linear',
+                repeatType: 'mirror',
+              }}
+              src="/svgs/circle-pink.svg"
               alt="profile_circle"
               className="absolute left-0 right-0 bottom-0 z-[0] h-[90%] w-full object-contain "
             />
@@ -98,7 +109,18 @@ const Landing = () => {
               ].join(' ');
 
               return (
-                <div
+                <motion.div
+                  animate={{
+                    y: [0, -17],
+                    x: [0, getRndInteger(-10, 10)],
+                  }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: getRndInteger(6, 8),
+                    delay: getRndInteger(0, 5),
+                    ease: 'linear',
+                    repeatType: 'mirror',
+                  }}
                   className={`flex items-center justify-center rounded-full bg-white shadow-[0px_0px_20px_rgba(0,0,0,0.1)] ${classNames}`}
                   key={`circle-${index}`}
                 >
@@ -110,7 +132,7 @@ const Landing = () => {
                       alt="profile_bg"
                     />
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </motion.div>
