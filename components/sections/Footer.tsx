@@ -62,7 +62,7 @@ const Footer = () => {
   return (
     <MotionWrapper>
       <Wrapper idName="contact">
-        <div className="flex flex-col items-center justify-center">
+        <div className="md-mt-0 mt-16 flex flex-col items-center justify-center">
           <div className="flex gap-4">
             <h2 className="head-text translate-y-1 -rotate-45 select-none">
               🤙
@@ -73,8 +73,8 @@ const Footer = () => {
             </h2>
           </div>
 
-          <div className="mx-8 mt-16 mb-8 flex w-full items-center justify-center gap-32 md:w-3/5">
-            <div className="my-4 flex w-full min-w-[300px] cursor-pointer items-center justify-start rounded-xl bg-[#faebed] p-4 pr-8 transition-all duration-300 ease-in-out hover:shadow-[0px_0px_2px_2px_#f5e3e5] sm:w-auto">
+          <div className="mx-8 mt-6 mb-8 flex w-full flex-col items-center justify-center md:mt-16 md:w-3/5 md:flex-row md:gap-32">
+            <div className="mt-4 mb-2 flex min-w-[300px] cursor-pointer items-center justify-start rounded-xl bg-[#faebed] p-4 pr-8 transition-all duration-300 ease-in-out hover:shadow-[0px_0px_2px_2px_#f5e3e5] sm:w-auto md:w-full">
               <div className="relative mx-3 h-10 w-10">
                 <Image
                   src="/images/mail.png"
@@ -92,7 +92,7 @@ const Footer = () => {
             </div>
             <a
               href="tel:+36 (20) 96-06333"
-              className="my-4 flex w-full min-w-[300px] cursor-pointer items-center justify-start rounded-xl bg-slate-200 p-4 transition-all duration-300 ease-in-out hover:shadow-[0px_0px_2px_2px_#d6cdce58] sm:w-auto"
+              className="my-4 flex min-w-[300px] cursor-pointer items-center justify-start rounded-xl bg-slate-200 p-4 transition-all duration-300 ease-in-out hover:shadow-[0px_0px_2px_2px_#d6cdce58] sm:w-auto md:w-full"
             >
               <div className="relative mx-3 h-10 w-10">
                 <Image
@@ -106,7 +106,7 @@ const Footer = () => {
             </a>
           </div>
           {!isFormSubmitted ? (
-            <div className="mx-8 my-4 flex w-full flex-col items-center justify-center md:w-3/5">
+            <div className="mx-8 flex min-w-[300px] flex-col items-center justify-center md:my-4 md:w-3/5">
               <div className="my-3 flex w-full cursor-pointer items-center justify-center rounded-xl bg-primary transition-all duration-300 ease-in-out hover:shadow-sm hover:shadow-slate-300">
                 <input
                   className="w-full rounded-lg bg-slate-200 p-4 text-gray outline-none focus:ring-2 focus:ring-secondary"
@@ -138,7 +138,7 @@ const Footer = () => {
               </div>
               <button
                 type="button"
-                className="my-4 w-full cursor-pointer rounded-xl border-0  bg-tertiary px-8 py-4 font-medium text-white outline-none transition-[cubic-bezier(0.55_0.085_0.68_0.53)] hover:shadow-sm hover:shadow-secondary md:mt-8 md:mb-0 md:w-auto"
+                className="my-4 mb-12 w-full cursor-pointer rounded-xl border-0 bg-tertiary  px-8 py-4 font-medium text-white outline-none transition-[cubic-bezier(0.55_0.085_0.68_0.53)] hover:shadow-sm hover:shadow-secondary md:mb-4 md:mt-8 md:mb-0 md:w-auto"
                 onClick={handleSubmit}
               >
                 {!loading ? 'Send Message' : 'Sending...'}
