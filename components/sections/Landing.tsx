@@ -36,7 +36,7 @@ const Landing = () => {
               <div className="flex w-auto flex-row items-center justify-center rounded-2xl px-8 py-4 shadow-[0px_0px_20px_rgba(0,0,0,0.1)]">
                 <span className="text-4xl 2xl:text-7xl">👋</span>
                 <div style={{ marginLeft: 20 }}>
-                  <p className="p-text mb-4">Hello, I am</p>
+                  <p className="p-text mb-4 text-right">Hello, I am</p>
                   <h1
                     style={{ textAlign: 'right' }}
                     className="head-text leading-none"

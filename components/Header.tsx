@@ -3,7 +3,13 @@ import Image from 'next/image';
 import { HiMenuAlt4, HiX } from 'react-icons/hi';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const sections = ['landing', 'about', 'works', 'skills', 'contact'];
+const sections = [
+  { name: 'landing', text: 'home' },
+  { name: 'about', text: 'about' },
+  { name: 'works', text: 'works' },
+  { name: 'skills', text: 'skills' },
+  { name: 'contact', text: 'contact' },
+];
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
@@ -19,20 +25,20 @@ const Header = () => {
         />
       </div>
       <ul className="hidden flex-1 items-center justify-center lg:flex">
-        {sections.map((item) => (
+        {sections.map(({ name, text }) => (
           <li
             className="p-text mx-4 my-2 flex cursor-pointer flex-col items-center justify-center"
-            key={`link-${item}`}
+            key={`link-${name}`}
           >
             <motion.a
               className="flex select-none flex-col font-medium  uppercase text-gray transition-colors duration-300 ease-in-out hover:text-secondary"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               draggable="false"
-              href={`#${item}`}
+              href={`#${name}`}
               onDrag={(e) => e.preventDefault()}
             >
-              {item}
+              {text}
             </motion.a>
           </li>
         ))}

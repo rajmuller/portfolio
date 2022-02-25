@@ -4,8 +4,6 @@ import axios from 'axios';
 
 import { MotionWrapper, Wrapper } from '../wrappers';
 
-type FooterProps = {};
-
 const Footer = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -57,6 +55,10 @@ const Footer = () => {
     }
   };
 
+  // TODO: more work
+  // TODO: work experience
+  // TODO: About section texts
+
   return (
     <MotionWrapper>
       <Wrapper idName="contact">
@@ -72,10 +74,10 @@ const Footer = () => {
           </div>
 
           <div className="mx-8 mt-16 mb-8 flex w-full items-center justify-center gap-32 md:w-3/5">
-            <div className="my-4 flex w-full min-w-[300px] cursor-pointer items-center justify-start rounded-xl bg-[#faebed] p-4 transition-all duration-300 ease-in-out hover:shadow-[0px_0px_2px_2px_#f5e3e5] sm:w-auto">
+            <div className="my-4 flex w-full min-w-[300px] cursor-pointer items-center justify-start rounded-xl bg-[#faebed] p-4 pr-8 transition-all duration-300 ease-in-out hover:shadow-[0px_0px_2px_2px_#f5e3e5] sm:w-auto">
               <div className="relative mx-3 h-10 w-10">
                 <Image
-                  src="/images/email.png"
+                  src="/images/mail.png"
                   alt="email"
                   layout="fill"
                   objectFit="cover"
