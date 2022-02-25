@@ -85,6 +85,4 @@ const Header = () => {
   );
 };
 
-// TODO: animate the backround balls with svg instead
-
 export default Header;

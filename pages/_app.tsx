@@ -15,5 +15,3 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 };
 
 export default MyApp;
-
-//TODO: favicon, logo
