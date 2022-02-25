@@ -136,7 +136,7 @@ const Footer = () => {
               </div>
               <button
                 type="button"
-                className="my-4 w-full cursor-pointer rounded-xl border-0  bg-secondary px-8 py-4 font-medium text-white outline-none transition-[cubic-bezier(0.55_0.085_0.68_0.53)] hover:shadow-sm hover:shadow-secondary md:mt-8 md:mb-0 md:w-auto"
+                className="my-4 w-full cursor-pointer rounded-xl border-0  bg-tertiary px-8 py-4 font-medium text-white outline-none transition-[cubic-bezier(0.55_0.085_0.68_0.53)] hover:shadow-sm hover:shadow-secondary md:mt-8 md:mb-0 md:w-auto"
                 onClick={handleSubmit}
               >
                 {!loading ? 'Send Message' : 'Sending...'}

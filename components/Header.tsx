@@ -3,16 +3,16 @@ import Image from 'next/image';
 import { HiMenuAlt4, HiX } from 'react-icons/hi';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const sections = ['landing', 'about', 'work', 'skills', 'contact'];
+const sections = ['landing', 'about', 'works', 'skills', 'contact'];
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
 
   return (
     <nav className="fixed z-[2] flex w-full items-center justify-between bg-white bg-opacity-25 py-4 px-8 backdrop-blur-sm">
-      <div className="relative flex h-[20px] w-[90px] items-center justify-start 2xl:h-[40px] 2xl:w-[180px]">
+      <div className="relative flex h-[40px] w-[90px] items-center justify-start">
         <Image
-          src="/images/logo.png"
+          src="/svgs/RD.svg"
           alt="logo"
           layout="fill"
           objectFit="contain"
