@@ -13,16 +13,17 @@
     "@sanity/client": "^3.1.0",
     "@sanity/image-url": "^1.0.1",
     "@tailwindcss/line-clamp": "^0.3.1",
+    "axios": "^0.26.0",
     "deepmerge": "^4.2.2",
     "framer-motion": "^6.2.7",
     "graphql": "^16.3.0",
     "graphql-request": "^4.0.0",
     "moment": "^2.29.1",
     "next": "latest",
+    "nodemailer": "^6.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-icons": "^4.3.1",
-    "react-tooltip": "^4.2.21"
+    "react-icons": "^4.3.1"
   },
   "devDependencies": {
     "@graphcms/rich-text-types": "^0.3.1",
@@ -30,6 +31,7 @@
     "@graphql-codegen/typescript": "^2.4.3",
     "@graphql-codegen/typescript-operations": "^2.3.0",
     "@types/node": "17.0.4",
+    "@types/nodemailer": "^6.4.4",
     "@types/react": "17.0.38",
     "autoprefixer": "^10.4.0",
     "eslint": "8.8.0",

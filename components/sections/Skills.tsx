@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import ReactTooltip from 'react-tooltip';
 
 import { SkillsType } from '../../types/sanity';
 
@@ -61,7 +60,7 @@ const Skills = ({ skills: { experiences, skills } }: SkillsProps) => {
                           whileInView={{ opacity: [0, 1] }}
                           transition={{ duration: 0.5 }}
                           className="mb-4 flex cursor-pointer flex-col items-start justify-start"
-                          data-tip={work!.desc}
+                          data-tip
                           data-for={work!.name}
                         >
                           <h4 className="bold-text font-medium">
@@ -72,9 +71,13 @@ const Skills = ({ skills: { experiences, skills } }: SkillsProps) => {
                           </p>
                         </motion.div>
                         <ReactTooltip
+                          id={work!.name!}
                           effect="solid"
+                          arrowColor="#fff"
                           className="max-w-xs rounded bg-white p-4 text-center leading-normal text-gray opacity-100 shadow-[0px_0px_25px_rgba(0,0,0,0.1)] 2xl:max-w-lg 2xl:text-2xl 2xl:leading-loose"
-                        />
+                        >
+                          {work?.desc}
+                        </ReactTooltip>
                       </div>
                     ))}
                   </motion.div>

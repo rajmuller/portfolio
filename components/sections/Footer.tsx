@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useCallback, useState } from 'react';
+import axios from 'axios';
 
 import { MotionWrapper, Wrapper } from '../wrappers';
 
@@ -24,21 +25,36 @@ const Footer = () => {
     [formData]
   );
 
-  const handleSubmit = () => {
-    // setLoading(true);
-    // const contact = {
-    //   _type: 'contact',
-    //   name: formData.name,
-    //   email: formData.email,
-    //   message: formData.message,
-    // };
-    // client
-    //   .create(contact)
-    //   .then(() => {
-    //     setLoading(false);
-    //     setIsFormSubmitted(true);
-    //   })
-    //   .catch((err) => console.log(err));
+  const handleSubmit = async () => {
+    setLoading(true);
+
+    const contact = {
+      _type: 'contact',
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+    };
+
+    const config = {
+      method: 'post',
+      url: `/api/contact`,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data: contact,
+    };
+
+    try {
+      // @ts-ignore
+      const response = await axios(config);
+      if (response.status == 200) {
+        setLoading(false);
+        setIsFormSubmitted(true);
+      }
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.error({ err });
+    }
   };
 
   return (
