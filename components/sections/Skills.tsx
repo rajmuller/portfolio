@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useState } from 'react';
 
 import { SkillsType } from '../../types/sanity';
+
+import Tooltip from '../Tooltip';
 
 import { MotionWrapper, Wrapper } from '../wrappers';
 
@@ -10,6 +13,8 @@ type SkillsProps = {
 };
 
 const Skills = ({ skills: { experiences, skills } }: SkillsProps) => {
+  const [showTooltip, setShowTooltip] = useState(false);
+
   return (
     <MotionWrapper>
       <Wrapper idName="skills">
@@ -57,9 +62,11 @@ const Skills = ({ skills: { experiences, skills } }: SkillsProps) => {
                     {experience.works!.map((work) => (
                       <div key={work!.name}>
                         <motion.div
+                          onMouseEnter={() => setShowTooltip(true)}
+                          onMouseLeave={() => setShowTooltip(false)}
                           whileInView={{ opacity: [0, 1] }}
                           transition={{ duration: 0.5 }}
-                          className="mb-4 flex cursor-pointer flex-col items-start justify-start"
+                          className="relative mb-4 flex cursor-pointer flex-col items-start justify-start"
                           data-tip
                           data-for={work!.name}
                         >
@@ -69,15 +76,8 @@ const Skills = ({ skills: { experiences, skills } }: SkillsProps) => {
                           <p className="p-text mt-1.5 font-normal text-gray">
                             {work!.company}
                           </p>
+                          <Tooltip show={showTooltip}>{work!.desc}</Tooltip>
                         </motion.div>
-                        <ReactTooltip
-                          id={work!.name!}
-                          effect="solid"
-                          arrowColor="#fff"
-                          className="max-w-xs rounded bg-white p-4 text-center leading-normal text-gray opacity-100 shadow-[0px_0px_25px_rgba(0,0,0,0.1)] 2xl:max-w-lg 2xl:text-2xl 2xl:leading-loose"
-                        >
-                          {work?.desc}
-                        </ReactTooltip>
                       </div>
                     ))}
                   </motion.div>
