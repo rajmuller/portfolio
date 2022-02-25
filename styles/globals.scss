@@ -10,55 +10,55 @@ body {
   margin: 0;
   font-family: 'Dm Sans', sans-serif;
   scroll-behavior: smooth;
+}
 
-  @layer components {
-    .head-text {
-      font-size: 2.75rem;
-      font-weight: 800;
-      text-align: center;
-      @apply text-black;
-      text-transform: capitalize;
+@layer components {
+  .head-text {
+    font-size: 2.75rem;
+    font-weight: 800;
+    text-align: center;
+    @apply text-black;
+    @apply capitalize;
 
-      span {
-        @apply text-secondary;
-      }
-
-      @media screen and (min-width: 2000px) {
-        font-size: 4rem;
-      }
-
-      @media screen and (max-width: 450px) {
-        font-size: 2rem;
-      }
+    span {
+      @apply text-secondary;
     }
 
-    .p-text {
-      font-size: 0.8rem;
-      @apply text-gray;
-      line-height: 1.5;
-
-      @media screen and (min-width: 1024px) {
-        font-size: 1rem;
-      }
-
-      @media screen and (min-width: 2000px) {
-        font-size: 1.75rem;
-      }
+    @media screen and (min-width: 2000px) {
+      font-size: 4rem;
     }
 
-    .bold-text {
+    @media screen and (max-width: 450px) {
+      font-size: 2rem;
+    }
+  }
+
+  .p-text {
+    font-size: 0.8rem;
+    @apply text-gray;
+    line-height: 1.5;
+
+    @media screen and (min-width: 1024px) {
       font-size: 1rem;
-      font-weight: 800;
-      @apply text-black;
-      text-align: left;
+    }
 
-      @media screen and (min-width: 2000px) {
-        font-size: 2rem;
-      }
+    @media screen and (min-width: 2000px) {
+      font-size: 1.75rem;
+    }
+  }
 
-      @media screen and (max-width: 450px) {
-        font-size: 0.9rem;
-      }
+  .bold-text {
+    font-size: 1rem;
+    font-weight: 800;
+    @apply text-black;
+    text-align: left;
+
+    @media screen and (min-width: 2000px) {
+      font-size: 2rem;
+    }
+
+    @media screen and (max-width: 450px) {
+      font-size: 0.9rem;
     }
   }
 }

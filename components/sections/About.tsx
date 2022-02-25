@@ -13,9 +13,9 @@ const About = ({ abouts }: AboutProps) => {
     <MotionWrapper>
       <Wrapper idName="about">
         <div className="flex flex-col">
-          <h2 className="head-text">
-            I Know that <span>Good Design</span> <br />
-            means <span>Good Business</span>
+          <h2 className="head-text normal-case">
+            The <span>Frontend</span> is my Swamp <br />
+            <span>Decentralization</span> is my Fiona <br />
           </h2>
 
           <div className="mt-8 flex flex-wrap items-start justify-center">
