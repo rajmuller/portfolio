@@ -8,9 +8,9 @@ const Instance = ({ Icon, href }: { Icon: IconType; href: string }) => (
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="my-1 flex h-6 w-6 cursor-pointer items-center justify-center rounded-full  border-secondary bg-white text-gray transition-all duration-300 ease-in-out hover:border-secondary hover:bg-secondary hover:text-white 2xl:my-2 2xl:h-12 2xl:w-12"
+    className="my-1 flex h-6 w-6 cursor-pointer items-center justify-center rounded-full  border-secondary bg-white text-gray transition-all duration-300 ease-in-out hover:border-secondary hover:bg-secondary hover:text-white lg:my-2 lg:h-12 lg:w-12"
   >
-    <Icon className="h-3 w-3 text-current 2xl:h-6 2xl:w-6" />
+    <Icon className="h-3 w-3 text-current lg:h-6 lg:w-6" />
   </a>
 );
 
