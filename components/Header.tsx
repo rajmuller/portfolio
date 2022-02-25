@@ -16,14 +16,17 @@ const Header = () => {
 
   return (
     <nav className="fixed z-[2] flex w-full items-center justify-between bg-white bg-opacity-25 py-4 px-8 backdrop-blur-sm">
-      <div className="relative flex h-[40px] w-[90px] items-center justify-start">
+      <a
+        href="#landing"
+        className="relative flex h-[26px] w-[52px] cursor-pointer items-center justify-start md:h-10 md:w-20"
+      >
         <Image
           src="/svgs/RD.svg"
           alt="logo"
           layout="fill"
           objectFit="contain"
         />
-      </div>
+      </a>
       <ul className="hidden flex-1 items-center justify-center lg:flex">
         {sections.map(({ name, text }) => (
           <li
