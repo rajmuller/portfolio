@@ -61,7 +61,7 @@ const Landing = () => {
             <Image
               layout="fill"
               objectFit="contain"
-              src="/images/profile.jpeg"
+              src="/images/sub4.png"
               className="z-[1]"
               alt="profile_bg"
             />
@@ -80,24 +80,21 @@ const Landing = () => {
             className="ml-0 flex h-full flex-[1] flex-row flex-wrap items-start justify-center gap-8 md:ml-4 md:flex-col md:gap-4"
           >
             {[
-              '/images/flutter.png',
               '/images/redux.png',
-              '/images/flutter.png',
-              '/images/sass.png',
-              '/images/flutter.png',
+              '/images/react.png',
+              '/images/nextjs.png',
+              '/images/graphql.png',
             ].map((url, index) => {
               const first = index === 0;
               const second = index === 1;
               const third = index === 2;
               const fourth = index === 3;
-              const fifth = index === 4;
               const classNames = [
                 first && 'w-12 h-12 hidden md:flex h-8 w-8 lg:h-16 lg:w-16',
                 second && 'h-16 w-16 lg:h-28 lg:w-28 md:ml-10',
                 third &&
                   'w-20 h-20 lg:h-36 lg:w-36 md:ml-20 md:my-4 translate-y-4 md:translate-y-0',
                 fourth && 'h-16 w-16 lg:h-28 lg:w-28 md:ml-10',
-                fifth && 'hidden w-12 h-12 md:flex h-8 w-8 lg:h-16 lg:w-16',
               ].join(' ');
 
               return (

@@ -2,14 +2,7 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
 import { sdk } from '../client';
-import {
-  About,
-  Footer,
-  Landing,
-  Skills,
-  Testimonial,
-  Works,
-} from '../components/sections';
+import { About, Footer, Landing, Skills, Works } from '../components/sections';
 import { AboutsType, SkillsType, WorksType } from '../types/sanity';
 
 type HomeProps = {
@@ -30,7 +23,6 @@ const Home = ({ abouts, works, skills }: HomeProps) => {
         <About abouts={abouts} />
         <Works works={works} />
         <Skills skills={skills} />
-        <Testimonial />
         <Footer />
       </div>
     </>

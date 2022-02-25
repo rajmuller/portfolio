@@ -2,14 +2,7 @@ type NavigationDotsProps = {
   active: string;
 };
 
-const sections = [
-  'landing',
-  'about',
-  'works',
-  'skills',
-  'testimonial',
-  'contact',
-];
+const sections = ['landing', 'about', 'works', 'skills', 'contact'];
 
 const NavigationDots = ({ active }: NavigationDotsProps) => {
   return (
