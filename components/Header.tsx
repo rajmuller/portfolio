@@ -65,20 +65,20 @@ const Header = () => {
                 onClick={() => setToggle(false)}
               />
               <ul className="flex h-full w-full flex-col items-start justify-start">
-                {sections.map((item) => (
+                {sections.map(({ name, text }) => (
                   <motion.li
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="m-4"
-                    key={item}
+                    key={name}
                   >
                     <a
                       className="text-base font-medium uppercase text-gray transition-colors duration-300 ease-in-out hover:text-secondary"
-                      href={`#${item}`}
+                      href={`#${name}`}
                       draggable="false"
                       onClick={() => setToggle(false)}
                     >
-                      {item}
+                      {text}
                     </a>
                   </motion.li>
                 ))}
