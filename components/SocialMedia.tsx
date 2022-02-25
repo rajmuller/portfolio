@@ -15,7 +15,7 @@ const Instance = ({ Icon, href }: { Icon: IconType; href: string }) => (
 );
 
 const SocialMedia = () => (
-  <div className="absolute bottom-0 left-1 z-50 flex flex-col items-center justify-end md:bottom-8 md:left-8">
+  <div className="absolute bottom-0 left-1 z-[2] flex flex-col items-center justify-end md:bottom-8 md:left-8">
     <Instance
       Icon={FaLinkedinIn}
       href="https://www.linkedin.com/in/adam-rajmuller/"

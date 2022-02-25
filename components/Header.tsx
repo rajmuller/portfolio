@@ -15,7 +15,7 @@ const Header = () => {
   const [toggle, setToggle] = useState(false);
 
   return (
-    <nav className="fixed z-[2] flex w-full items-center justify-between bg-white bg-opacity-25 py-4 px-8 backdrop-blur-sm">
+    <nav className="fixed z-50 flex w-full items-center justify-between bg-white bg-opacity-25 py-4 px-8 backdrop-blur-sm">
       <a
         href="#landing"
         className="relative flex h-[26px] w-[52px] cursor-pointer items-center justify-start md:h-10 md:w-20"

@@ -13,7 +13,9 @@ type SkillsProps = {
 };
 
 const Skills = ({ skills: { experiences, skills } }: SkillsProps) => {
-  const [showTooltip, setShowTooltip] = useState(false);
+  const [showTooltip, setShowTooltip] = useState<{ [key: string]: boolean }>(
+    {}
+  );
 
   return (
     <MotionWrapper>
@@ -58,15 +60,19 @@ const Skills = ({ skills: { experiences, skills } }: SkillsProps) => {
                       {experience.year}
                     </p>
                   </div>
-                  <motion.div className="mb-4 flex cursor-default flex-col items-start justify-start">
+                  <motion.div className="mb-4 flex w-full cursor-default flex-col items-start justify-start">
                     {experience.works!.map((work) => (
                       <div key={work!.name}>
                         <motion.div
-                          onMouseEnter={() => setShowTooltip(true)}
-                          onMouseLeave={() => setShowTooltip(false)}
+                          onMouseEnter={() =>
+                            setShowTooltip({ [work!.name!]: true })
+                          }
+                          onMouseLeave={() =>
+                            setShowTooltip({ [work!.name!]: false })
+                          }
                           whileInView={{ opacity: [0, 1] }}
                           transition={{ duration: 0.5 }}
-                          className="relative mb-4 flex cursor-pointer flex-col items-start justify-start"
+                          className="relative mb-4 flex w-full cursor-pointer flex-col items-start justify-start"
                           data-tip
                           data-for={work!.name}
                         >
@@ -76,7 +82,9 @@ const Skills = ({ skills: { experiences, skills } }: SkillsProps) => {
                           <p className="p-text mt-1.5 font-normal text-gray">
                             {work!.company}
                           </p>
-                          <Tooltip show={showTooltip}>{work!.desc}</Tooltip>
+                          <Tooltip show={showTooltip[work!.name!]}>
+                            {work!.desc}
+                          </Tooltip>
                         </motion.div>
                       </div>
                     ))}

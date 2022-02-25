@@ -56,8 +56,6 @@ const Footer = () => {
   };
 
   // TODO: more work
-  // TODO: work experience
-  // TODO: About section texts
 
   return (
     <MotionWrapper>
