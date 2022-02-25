@@ -49,12 +49,12 @@ const Works = ({ works }: WorksProps) => {
   return (
     <MotionWrapper>
       <Wrapper idName="works">
-        <div className="flex flex-col items-center justify-center">
+        <div className="mt-16 flex flex-col items-center justify-center md:mt-0">
           <h2 className="head-text">
             My Humble <span>Portfolio</span> <br /> Section
           </h2>
 
-          <div className="mt-16 mb-8 flex flex-wrap items-center justify-start gap-4">
+          <div className="mt-16 mb-8 flex flex-wrap items-center justify-center gap-4 md:justify-start">
             {tags.map((item, index) => (
               <div
                 key={index}
@@ -92,7 +92,7 @@ const Works = ({ works }: WorksProps) => {
                         duration: 0.3,
                         ease: 'linear',
                       }}
-                      className="absolute top-0 left-0 z-10 flex h-full w-full items-center justify-center bg-[rgba(0,0,0,0.5)] opacity-0"
+                      className="opacity-1 absolute top-0 left-0 z-10 flex h-full w-full items-center justify-center bg-[rgba(0,0,0,0.5)] md:opacity-0"
                     >
                       {work?.projectLink && (
                         <a

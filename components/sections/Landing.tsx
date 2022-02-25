@@ -91,10 +91,10 @@ const Landing = () => {
             className="ml-0 flex h-full flex-[1] flex-row flex-wrap items-start justify-center gap-8 md:ml-4 md:flex-col md:gap-4"
           >
             {[
-              '/images/redux.png',
+              '/images/graphql.png',
               '/images/react.png',
               '/images/nextjs.png',
-              '/images/graphql.png',
+              '/images/redux.png',
             ].map((url, index) => {
               const first = index === 0;
               const second = index === 1;
