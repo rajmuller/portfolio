@@ -3,7 +3,7 @@ import { getSdk } from '../graphql/generated'; // THIS FILE IS THE GENERATED FIL
 
 export const sdk = () => {
   const client = new GraphQLClient(
-    'https://xqw2al3e.api.sanity.io/v1/graphql/production/default'
+    `https://${process.env.SANITY_PROJECT_ID}.api.sanity.io/v1/graphql/production/default`
   );
   const _sdk = getSdk(client);
   return _sdk;
