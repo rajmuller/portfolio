@@ -14,7 +14,7 @@ const About = ({ abouts }: AboutProps) => {
       <Wrapper idName="about">
         <div className="mt-16 flex flex-col md:mt-0">
           <h2 className="head-text normal-case">
-            The <span>Frontend</span> is my Swamp <br />
+            <span>Frontend</span> is my Swamp <br />
             <span>Decentralization</span> is my Fiona <br />
           </h2>
 
