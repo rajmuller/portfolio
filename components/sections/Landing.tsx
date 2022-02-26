@@ -35,8 +35,6 @@ const Landing = () => {
     setRevealed(!revealed);
   }, [revealed]);
 
-  console.log({ revealed });
-
   return (
     <MotionWrapper>
       <Wrapper
