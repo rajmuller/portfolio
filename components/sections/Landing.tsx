@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useCallback, useState } from 'react';
+
 import { getRndInteger } from '../../util';
+
 import { MotionWrapper, Wrapper } from '../wrappers';
 
 const scaleVariants = {
@@ -15,6 +18,12 @@ const scaleVariants = {
 };
 
 const Landing = () => {
+  const [revealed, setRevealed] = useState(false);
+
+  const toggle = useCallback(() => {
+    setRevealed(!revealed);
+  }, [revealed]);
+
   return (
     <MotionWrapper>
       <Wrapper
@@ -34,7 +43,12 @@ const Landing = () => {
           >
             <div className="flex w-full flex-col items-start justify-start xl:items-end xl:justify-center">
               <div className="flex w-auto flex-row items-center justify-center rounded-2xl px-8 py-4 shadow-[0px_0px_20px_rgba(0,0,0,0.1)]">
-                <span className="text-4xl 2xl:text-7xl">👋</span>
+                <span
+                  onClick={toggle}
+                  className="cursor-pointer text-4xl 2xl:text-7xl"
+                >
+                  👋
+                </span>
                 <div style={{ marginLeft: 20 }}>
                   <p className="p-text mb-4 text-right">Hello, I am</p>
                   <h1
@@ -65,8 +79,10 @@ const Landing = () => {
             <Image
               layout="fill"
               objectFit="contain"
-              src="/images/sub4.png"
-              className="z-[1]"
+              src="/images/sub2.png"
+              className={`z-[1] transition-all duration-700 ease-linear brightness-[${
+                revealed ? '1' : '0.2'
+              }]`}
               alt="profile_picture"
             />
             <motion.img
