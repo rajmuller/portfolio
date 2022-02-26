@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useCallback, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { Tooltip } from '..';
 
 import { getRndInteger } from '../../util';
@@ -22,8 +22,15 @@ const Landing = () => {
   const [revealed, setRevealed] = useState(false);
   const [high5Hovered, setHigh5Hovered] = useState(false);
   const [alreadyHigh5d, setAlreadyHigh5d] = useState(false);
+  const counter = useRef(0);
 
   const toggle = useCallback(() => {
+    counter.current++;
+    if (counter.current > 9) {
+      setRevealed(true);
+      return;
+    }
+
     setAlreadyHigh5d(true);
     setRevealed(!revealed);
   }, [revealed]);
@@ -91,7 +98,9 @@ const Landing = () => {
             <Image
               layout="fill"
               objectFit="contain"
-              src="/images/sub2.png"
+              src={
+                counter.current < 10 ? '/images/sub2.png' : '/images/shrek.png'
+              }
               className={`z-[1] transition-all duration-700 ease-linear ${
                 !revealed ? 'brightness-[0.2]' : 'brightness-[1]'
               }`}
