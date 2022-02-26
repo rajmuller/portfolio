@@ -60,7 +60,7 @@ const Landing = () => {
                   </Tooltip>
                 </span>
                 <div style={{ marginLeft: 20 }}>
-                  <p className="p-text mb-4 text-right">Hello, I am</p>
+                  <p className="p-text mb-4 text-right">Hello there, I am</p>
                   <h1
                     style={{ textAlign: 'right' }}
                     className="head-text leading-none"
