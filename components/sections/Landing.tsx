@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useCallback, useState } from 'react';
+import { Tooltip } from '..';
 
 import { getRndInteger } from '../../util';
 
@@ -19,8 +20,11 @@ const scaleVariants = {
 
 const Landing = () => {
   const [revealed, setRevealed] = useState(false);
+  const [high5Hovered, setHigh5Hovered] = useState(false);
+  const [alreadyHigh5d, setAlreadyHigh5d] = useState(false);
 
   const toggle = useCallback(() => {
+    setAlreadyHigh5d(true);
     setRevealed(!revealed);
   }, [revealed]);
 
@@ -43,11 +47,17 @@ const Landing = () => {
           >
             <div className="flex w-full flex-col items-start justify-start xl:items-end xl:justify-center">
               <div className="flex w-auto flex-row items-center justify-center rounded-2xl px-8 py-4 shadow-[0px_0px_20px_rgba(0,0,0,0.1)]">
-                <span
-                  onClick={toggle}
-                  className="cursor-pointer text-4xl 2xl:text-7xl"
-                >
-                  👋
+                <span onClick={toggle} className="relative">
+                  <span
+                    className=" cursor-pointer text-4xl 2xl:text-7xl"
+                    onMouseEnter={() => setHigh5Hovered(true)}
+                    onMouseLeave={() => setHigh5Hovered(false)}
+                  >
+                    👋
+                  </span>
+                  <Tooltip show={high5Hovered && !alreadyHigh5d}>
+                    Gimme a high 5
+                  </Tooltip>
                 </span>
                 <div style={{ marginLeft: 20 }}>
                   <p className="p-text mb-4 text-right">Hello, I am</p>
