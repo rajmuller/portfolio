@@ -28,6 +28,8 @@ const Landing = () => {
     setRevealed(!revealed);
   }, [revealed]);
 
+  console.log({ revealed });
+
   return (
     <MotionWrapper>
       <Wrapper
@@ -90,9 +92,9 @@ const Landing = () => {
               layout="fill"
               objectFit="contain"
               src="/images/sub2.png"
-              className={`z-[1] transition-all duration-700 ease-linear brightness-[${
-                revealed ? '1' : '0.2'
-              }]`}
+              className={`z-[1] transition-all duration-700 ease-linear ${
+                !revealed ? 'brightness-[0.2]' : 'brightness-[1]'
+              }`}
               alt="profile_picture"
             />
             <motion.img
