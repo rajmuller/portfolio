@@ -18,7 +18,7 @@ const Home = ({ abouts, works, skills }: HomeProps) => {
         <title>Rein Portfolio Website</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="bg-primary">
+      <div className="relative bg-primary">
         <Landing />
         <About abouts={abouts} />
         <Works works={works} />

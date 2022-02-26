@@ -10,6 +10,13 @@ body {
   margin: 0;
   font-family: 'Dm Sans', sans-serif;
   scroll-behavior: smooth;
+
+  :target:before {
+    content: '';
+    display: block;
+    height: 720px;
+    margin: -720px 0 0;
+  }
 }
 
 @layer components {
