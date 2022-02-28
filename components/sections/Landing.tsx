@@ -1,8 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
-import { useCallback, useRef, useState } from 'react';
+import { memo, useCallback, useRef, useState } from 'react';
 
-import { getRndInteger } from '../../util';
+import { getRndInteger, memoize } from '../../util';
 
 import { MotionWrapper, Wrapper } from '../wrappers';
 
@@ -16,6 +16,68 @@ const scaleVariants = {
     },
   },
 };
+
+const memoizedGetRndNumber = memoize(getRndInteger);
+
+const techs = [
+  '/images/graphql.png',
+  '/images/react.png',
+  '/images/nextjs.png',
+  '/images/redux.png',
+];
+
+const FloatingTechsComponent = () => {
+  return (
+    <motion.div
+      variants={scaleVariants}
+      whileInView={scaleVariants.whileInView}
+      className="ml-0 flex h-full flex-[1] flex-row flex-wrap items-start justify-center gap-8 md:ml-4 md:flex-col md:gap-4"
+    >
+      {techs.map((url, index) => {
+        const first = index === 0;
+        const second = index === 1;
+        const third = index === 2;
+        const fourth = index === 3;
+        const classNames = [
+          first && 'w-12 h-12 hidden md:flex h-8 w-8 lg:h-16 lg:w-16',
+          second && 'h-16 w-16 lg:h-28 lg:w-28 md:ml-10',
+          third &&
+            'w-20 h-20 lg:h-36 lg:w-36 md:ml-20 md:my-4 translate-y-4 md:translate-y-0',
+          fourth && 'h-16 w-16 lg:h-28 lg:w-28 md:ml-10',
+        ].join(' ');
+
+        return (
+          <motion.div
+            animate={{
+              y: [0, -17],
+              x: [0, memoizedGetRndNumber(-100, 100, index)],
+            }}
+            transition={{
+              repeat: Infinity,
+              duration: memoizedGetRndNumber(6, 8, index),
+              delay: memoizedGetRndNumber(0, 5, index),
+              ease: 'linear',
+              repeatType: 'mirror',
+            }}
+            className={`flex items-center justify-center rounded-full bg-white shadow-[0px_0px_20px_rgba(0,0,0,0.1)] ${classNames}`}
+            key={`circle-${index}`}
+          >
+            <div className="relative h-2/3 w-2/3">
+              <Image
+                layout="fill"
+                objectFit="contain"
+                src={url}
+                alt="profile_bg"
+              />
+            </div>
+          </motion.div>
+        );
+      })}
+    </motion.div>
+  );
+};
+
+const FloatingTechs = memo(FloatingTechsComponent);
 
 const Landing = () => {
   const [revealed, setRevealed] = useState(false);
@@ -126,7 +188,7 @@ const Landing = () => {
               layout="fill"
               objectFit="contain"
               src={
-                counter.current < 10 ? '/images/sub2.png' : '/images/shrek.png'
+                counter.current < 9 ? '/images/sub2.png' : '/images/shrek.png'
               }
               className={`z-[1] transition-all duration-700 ease-linear ${
                 !revealed ? 'brightness-[0.2]' : 'brightness-[1]'
@@ -149,57 +211,7 @@ const Landing = () => {
             />
           </motion.div>
 
-          <motion.div
-            variants={scaleVariants}
-            whileInView={scaleVariants.whileInView}
-            className="ml-0 flex h-full flex-[1] flex-row flex-wrap items-start justify-center gap-8 md:ml-4 md:flex-col md:gap-4"
-          >
-            {[
-              '/images/graphql.png',
-              '/images/react.png',
-              '/images/nextjs.png',
-              '/images/redux.png',
-            ].map((url, index) => {
-              const first = index === 0;
-              const second = index === 1;
-              const third = index === 2;
-              const fourth = index === 3;
-              const classNames = [
-                first && 'w-12 h-12 hidden md:flex h-8 w-8 lg:h-16 lg:w-16',
-                second && 'h-16 w-16 lg:h-28 lg:w-28 md:ml-10',
-                third &&
-                  'w-20 h-20 lg:h-36 lg:w-36 md:ml-20 md:my-4 translate-y-4 md:translate-y-0',
-                fourth && 'h-16 w-16 lg:h-28 lg:w-28 md:ml-10',
-              ].join(' ');
-
-              return (
-                <motion.div
-                  animate={{
-                    y: [0, -17],
-                    x: [0, getRndInteger(-10, 10)],
-                  }}
-                  transition={{
-                    repeat: Infinity,
-                    duration: getRndInteger(6, 8),
-                    delay: getRndInteger(0, 5),
-                    ease: 'linear',
-                    repeatType: 'mirror',
-                  }}
-                  className={`flex items-center justify-center rounded-full bg-white shadow-[0px_0px_20px_rgba(0,0,0,0.1)] ${classNames}`}
-                  key={`circle-${index}`}
-                >
-                  <div className="relative h-2/3 w-2/3">
-                    <Image
-                      layout="fill"
-                      objectFit="contain"
-                      src={url}
-                      alt="profile_bg"
-                    />
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
+          <FloatingTechs />
         </div>
       </Wrapper>
     </MotionWrapper>
