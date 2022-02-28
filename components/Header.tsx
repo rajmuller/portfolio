@@ -54,7 +54,7 @@ const Header = () => {
               key={`link-${name}`}
             >
               <motion.div
-                className="flex select-none flex-col font-medium  uppercase text-gray transition-colors duration-300 ease-in-out hover:text-secondary"
+                className="flex select-none flex-col text-sm font-medium  uppercase text-gray transition-colors duration-300 ease-in-out hover:text-secondary"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 draggable="false"
@@ -101,7 +101,7 @@ const Header = () => {
                   key={name}
                 >
                   <div
-                    className="cursor-pointer text-base font-medium uppercase text-gray transition-colors duration-300 ease-in-out hover:text-secondary"
+                    className="cursor-pointer text-sm font-medium uppercase text-gray transition-colors duration-300 ease-in-out hover:text-secondary"
                     draggable="false"
                     onClick={() => handleNavigate(name)}
                   >

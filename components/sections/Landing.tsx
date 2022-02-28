@@ -1,7 +1,6 @@
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import { useCallback, useRef, useState } from 'react';
-import { Tooltip } from '..';
 
 import { getRndInteger } from '../../util';
 
@@ -20,18 +19,17 @@ const scaleVariants = {
 
 const Landing = () => {
   const [revealed, setRevealed] = useState(false);
-  const [high5Hovered, setHigh5Hovered] = useState(false);
-  const [alreadyHigh5d, setAlreadyHigh5d] = useState(false);
+  const [repeat, setRepeat] = useState(true);
   const counter = useRef(0);
 
   const toggle = useCallback(() => {
     counter.current++;
+    setRepeat(false);
     if (counter.current > 9) {
       setRevealed(true);
       return;
     }
 
-    setAlreadyHigh5d(true);
     setRevealed(!revealed);
   }, [revealed]);
 
@@ -54,18 +52,49 @@ const Landing = () => {
           >
             <div className="flex w-full flex-col items-start justify-start xl:items-end xl:justify-center">
               <div className="flex w-auto flex-row items-center justify-center rounded-2xl px-8 py-4 shadow-[0px_0px_20px_rgba(0,0,0,0.1)]">
-                <span onClick={toggle} className="relative">
-                  <span
-                    className=" cursor-pointer text-4xl 2xl:text-7xl"
-                    onMouseEnter={() => setHigh5Hovered(true)}
-                    onMouseLeave={() => setHigh5Hovered(false)}
-                  >
-                    👋
-                  </span>
-                  <Tooltip show={high5Hovered && !alreadyHigh5d}>
-                    Gimme a high 5
-                  </Tooltip>
-                </span>
+                <AnimatePresence exitBeforeEnter>
+                  {repeat ? (
+                    <motion.span
+                      exit={{ scale: 0 }}
+                      onClick={toggle}
+                      animate={{
+                        scale: [1, 1.5, 1.5, 1],
+                        rotate: [
+                          '0deg',
+                          '30deg',
+                          '-30deg',
+                          '30deg',
+                          '-30deg',
+                          '30deg',
+                          '-30deg',
+                          '30deg',
+                          '-30deg',
+                          '30deg',
+                          '-30deg',
+                          '0deg',
+                        ],
+                      }}
+                      transition={{
+                        delay: 1,
+                        repeatDelay: 5,
+                        duration: 1,
+                        repeat: Infinity,
+                        repeatType: 'loop',
+                      }}
+                      className=" cursor-pointer text-4xl 2xl:text-7xl"
+                    >
+                      👋
+                    </motion.span>
+                  ) : (
+                    <motion.span
+                      animate={{ scale: 1 }}
+                      onClick={toggle}
+                      className=" cursor-pointer text-4xl 2xl:text-7xl"
+                    >
+                      👋
+                    </motion.span>
+                  )}
+                </AnimatePresence>
                 <div style={{ marginLeft: 20 }}>
                   <p className="p-text mb-4 text-right">Hello there, I am</p>
                   <h1

@@ -4,6 +4,87 @@ import axios from 'axios';
 
 import { MotionWrapper, Wrapper } from '../wrappers';
 
+type ContactProps = {
+  isFormSubmitted: boolean;
+  error: boolean;
+  loading: boolean;
+  name: string;
+  email: string;
+  message: string;
+  // eslint-disable-next-line no-unused-vars
+  handleChangeInput: (e: any) => void;
+  handleSubmit: () => void;
+};
+
+const Contact = ({
+  error,
+  name,
+  message,
+  loading,
+  email,
+  handleChangeInput,
+  handleSubmit,
+  isFormSubmitted,
+}: ContactProps) => {
+  if (error) {
+    return (
+      <div>
+        <h3 className="head-text">
+          Some error happened. Please try again later!
+        </h3>
+      </div>
+    );
+  }
+
+  if (!isFormSubmitted) {
+    return (
+      <div className="mx-8 flex min-w-[300px] flex-col items-center justify-center md:my-4 md:w-3/5">
+        <div className="my-3 flex w-full cursor-pointer items-center justify-center rounded-xl bg-primary transition-all duration-300 ease-in-out hover:shadow-sm hover:shadow-slate-300">
+          <input
+            className="w-full rounded-lg bg-slate-200 p-4 text-gray outline-none focus:ring-2 focus:ring-secondary"
+            type="text"
+            placeholder="Your Name"
+            name="name"
+            value={name}
+            onChange={handleChangeInput}
+          />
+        </div>
+        <div className="my-3 flex w-full cursor-pointer items-center justify-center rounded-xl bg-primary transition-all duration-300 ease-in-out hover:shadow-sm hover:shadow-slate-300">
+          <input
+            className="w-full rounded-lg bg-slate-200 p-4 text-gray outline-none focus:ring-2 focus:ring-secondary"
+            type="email"
+            placeholder="Your Email"
+            name="email"
+            value={email}
+            onChange={handleChangeInput}
+          />
+        </div>
+        <div className="my-3 flex w-full cursor-pointer items-center justify-center rounded-xl bg-primary transition-all duration-300 ease-in-out hover:shadow-sm hover:shadow-slate-300">
+          <textarea
+            className="h-44 w-full rounded-lg bg-slate-200 p-4 text-gray outline-none focus:ring-2 focus:ring-secondary"
+            placeholder="Your Message"
+            value={message}
+            name="message"
+            onChange={handleChangeInput}
+          />
+        </div>
+        <button
+          type="button"
+          className="my-4 mb-12 w-full cursor-pointer rounded-xl border-0 bg-tertiary  px-8 py-4 font-medium text-white outline-none transition-[cubic-bezier(0.55_0.085_0.68_0.53)] hover:shadow-sm hover:shadow-secondary md:mb-4 md:mt-8 md:w-auto"
+          onClick={handleSubmit}
+        >
+          {!loading ? 'Send Message' : 'Sending...'}
+        </button>
+      </div>
+    );
+  }
+  return (
+    <div>
+      <h3 className="head-text">Thank you for getting in touch!</h3>
+    </div>
+  );
+};
+
 const Footer = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -12,6 +93,7 @@ const Footer = () => {
   });
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [formError, setFormError] = useState(false);
 
   const { name, email, message } = formData;
 
@@ -52,6 +134,8 @@ const Footer = () => {
     } catch (err) {
       // eslint-disable-next-line no-console
       console.error({ err });
+      setLoading(false);
+      setFormError(true);
     }
   };
 
@@ -103,50 +187,16 @@ const Footer = () => {
               <p className="p-text">+36 (20) 96-06333</p>
             </a>
           </div>
-          {!isFormSubmitted ? (
-            <div className="mx-8 flex min-w-[300px] flex-col items-center justify-center md:my-4 md:w-3/5">
-              <div className="my-3 flex w-full cursor-pointer items-center justify-center rounded-xl bg-primary transition-all duration-300 ease-in-out hover:shadow-sm hover:shadow-slate-300">
-                <input
-                  className="w-full rounded-lg bg-slate-200 p-4 text-gray outline-none focus:ring-2 focus:ring-secondary"
-                  type="text"
-                  placeholder="Your Name"
-                  name="name"
-                  value={name}
-                  onChange={handleChangeInput}
-                />
-              </div>
-              <div className="my-3 flex w-full cursor-pointer items-center justify-center rounded-xl bg-primary transition-all duration-300 ease-in-out hover:shadow-sm hover:shadow-slate-300">
-                <input
-                  className="w-full rounded-lg bg-slate-200 p-4 text-gray outline-none focus:ring-2 focus:ring-secondary"
-                  type="email"
-                  placeholder="Your Email"
-                  name="email"
-                  value={email}
-                  onChange={handleChangeInput}
-                />
-              </div>
-              <div className="my-3 flex w-full cursor-pointer items-center justify-center rounded-xl bg-primary transition-all duration-300 ease-in-out hover:shadow-sm hover:shadow-slate-300">
-                <textarea
-                  className="h-44 w-full rounded-lg bg-slate-200 p-4 text-gray outline-none focus:ring-2 focus:ring-secondary"
-                  placeholder="Your Message"
-                  value={message}
-                  name="message"
-                  onChange={handleChangeInput}
-                />
-              </div>
-              <button
-                type="button"
-                className="my-4 mb-12 w-full cursor-pointer rounded-xl border-0 bg-tertiary  px-8 py-4 font-medium text-white outline-none transition-[cubic-bezier(0.55_0.085_0.68_0.53)] hover:shadow-sm hover:shadow-secondary md:mb-4 md:mt-8 md:w-auto"
-                onClick={handleSubmit}
-              >
-                {!loading ? 'Send Message' : 'Sending...'}
-              </button>
-            </div>
-          ) : (
-            <div>
-              <h3 className="head-text">Thank you for getting in touch!</h3>
-            </div>
-          )}
+          <Contact
+            isFormSubmitted={isFormSubmitted}
+            error={formError}
+            loading={loading}
+            name={name}
+            email={email}
+            message={message}
+            handleChangeInput={handleChangeInput}
+            handleSubmit={handleSubmit}
+          />
         </div>
       </Wrapper>
     </MotionWrapper>
