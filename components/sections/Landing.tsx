@@ -50,11 +50,11 @@ const FloatingTechsComponent = () => {
           <motion.div
             animate={{
               y: [0, -17],
-              x: [0, memoizedGetRndNumber(-100, 100, index)],
+              x: [0, memoizedGetRndNumber(-13, 13, index)],
             }}
             transition={{
               repeat: Infinity,
-              duration: memoizedGetRndNumber(6, 8, index),
+              duration: memoizedGetRndNumber(5, 7, index),
               delay: memoizedGetRndNumber(0, 5, index),
               ease: 'linear',
               repeatType: 'mirror',
