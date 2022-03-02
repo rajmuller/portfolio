@@ -87,7 +87,7 @@ const Landing = () => {
   const toggle = useCallback(() => {
     counter.current++;
     setRepeat(false);
-    if (counter.current > 9) {
+    if (counter.current > 4) {
       setRevealed(true);
       return;
     }
@@ -138,7 +138,7 @@ const Landing = () => {
                       }}
                       transition={{
                         delay: 1,
-                        repeatDelay: 5,
+                        repeatDelay: 2,
                         duration: 1,
                         repeat: Infinity,
                         repeatType: 'loop',
@@ -151,7 +151,7 @@ const Landing = () => {
                     <motion.span
                       animate={{ scale: 1 }}
                       onClick={toggle}
-                      className=" cursor-pointer text-4xl 2xl:text-7xl"
+                      className=" relative cursor-pointer text-4xl 2xl:text-7xl"
                     >
                       👋
                     </motion.span>
@@ -188,7 +188,7 @@ const Landing = () => {
               layout="fill"
               objectFit="contain"
               src={
-                counter.current < 9 ? '/images/sub2.png' : '/images/shrek.png'
+                counter.current > 4 ? '/images/shrek.png' : '/images/sub2.png'
               }
               className={`z-[1] transition-all duration-700 ease-linear ${
                 !revealed ? 'brightness-[0.2]' : 'brightness-[1]'
