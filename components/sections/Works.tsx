@@ -2,9 +2,8 @@ import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 import Image from 'next/image';
 import { useCallback, useState } from 'react';
 import { AiFillEye, AiFillGithub } from 'react-icons/ai';
-import { Wrapper, MotionWrapper } from '../wrappers';
-
 import { WorksType } from '../../types/sanity';
+import { MotionWrapper, Wrapper } from '../wrappers';
 
 type WorksProps = {
   works: WorksType;
@@ -73,7 +72,7 @@ const Works = ({ works }: WorksProps) => {
               animate={controls}
               className="flex flex-wrap items-center justify-center"
             >
-              {filteredWorks.map((work, index) => (
+              {filteredWorks.reverse().map((work, index) => (
                 <div
                   className="m-8 flex w-72 cursor-pointer flex-col items-center justify-center rounded-lg bg-[#fff] p-4 text-black transition-all duration-300 ease-linear hover:shadow-[0px_0px_25px_rgba(0,0,0,0.2)]"
                   key={index}
