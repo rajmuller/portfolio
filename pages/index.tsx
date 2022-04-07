@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const skills = { skills: allSkills, experiences };
 
   return {
-    props: { abouts, works, skills },
+    props: { abouts, works: works.reverse(), skills },
   };
 };
 

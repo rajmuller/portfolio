@@ -72,7 +72,7 @@ const Works = ({ works }: WorksProps) => {
               animate={controls}
               className="flex flex-wrap items-center justify-center"
             >
-              {filteredWorks.reverse().map((work, index) => (
+              {filteredWorks.map((work, index) => (
                 <div
                   className="m-8 flex w-72 cursor-pointer flex-col items-center justify-center rounded-lg bg-[#fff] p-4 text-black transition-all duration-300 ease-linear hover:shadow-[0px_0px_25px_rgba(0,0,0,0.2)]"
                   key={index}
